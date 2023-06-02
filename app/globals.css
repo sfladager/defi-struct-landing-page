@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-dark: #1DB7AC;
+  --primary-mid: '#42E8DB';
+  --primary-light: '#CDFCE7';
+  --secondary-dark: '#0E1531';
+  --secondary-mid: '#595C63';
+
+}
+
+body {
+  //color: rgb(var(--foreground-rgb));
+  //background: linear-gradient(
+    //  to bottom,
+      //transparent,
+      //rgb(var(--background-end-rgb))
+    //)
+    //rgb(var(--background-start-rgb));
+}
+
+
+@keyframes letterIn {
+  0% {
+    opacity: 0;
+    transform: rotateX(90deg);
+  }
+  100% {
+    opacity: 1;
+    transform: rotateX(0deg);
+  }
+}
+
+.letter-in {
+  animation: letterIn 1s ease-in-out;
+  transition: transform .38s cubic-bezier(.175,.885,.32,1.275);
+  transform-origin: 50% 50% 25px;
+}
+
+
+@keyframes letterOut {
+  0% {
+    opacity: 1;
+    transform: rotateX(0deg);
+  }
+  100% {
+    opacity: 0;
+    transform: rotateX(90deg);
+  }
+}
+
+.letter-out {
+  animation: letterOut 1s ease-in-out;
+  transition: transform .32s cubic-bezier(0.55, 0.06, 0.68, 0.19);
+  transform-origin: 50% 50% 25px;
+}
+
+@keyframes letterBehind {
+  0% {
+    opacity: 1;
+    transform: rotateX(0deg);
+  }
+  100% {
+    opacity: 0;
+    transform: rotateX(-90deg);
+  }
+}
+
+.letter-behind {
+  animation: letterBehind 1s ease-in-out;
+  transition: transform .32s cubic-bezier(0.55, 0.06, 0.68, 0.19);
+  transform-origin: 50% 50% 25px;
+}
+
+.card {
+  background-color: var(--primary-dark);
+  border-radius: 8px;
+  height: 100%;
+  width: 30%;
+}  
