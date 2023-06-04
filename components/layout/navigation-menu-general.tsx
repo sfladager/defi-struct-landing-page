@@ -20,7 +20,7 @@ import { LinkComponent } from '../shared/link-component'
 
 export function NavigationMenuGeneral() {
   return (
-    <NavigationMenu className="self-center">
+    <NavigationMenu className="justify-center">
       <NavigationMenuList className="w-full">
         <NavigationMenuItem>
           <NavigationMenuTrigger>Vaults</NavigationMenuTrigger>

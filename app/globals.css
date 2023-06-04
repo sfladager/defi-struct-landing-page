@@ -80,3 +80,11 @@ body {
   height: 100%;
   width: 30%;
 }  
+
+.btn {
+  @apply cursor-pointer text-xs font-bold rounded-full shadow-md inline-block px-4 text-center focus:outline-none focus:ring-2 focus:ring-primary-mid focus:ring-opacity-75 duration-200 items-center justify-center;
+}
+
+.btn-primary {
+  @apply bg-primary-dark hover:bg-primary-mid text-secondary-dark focus:ring-gray-400;
+}

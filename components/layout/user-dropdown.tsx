@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion'
-import { LuBinary, LuDatabase, LuLayoutDashboard, LuLogOut } from 'react-icons/lu'
 import Link from 'next/link'
 
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
@@ -9,30 +8,31 @@ import { BranchIsAuthenticated } from '../../integrations/siwe/components/branch
 import { ButtonSIWELogin } from '../../integrations/siwe/components/button-siwe-login'
 import { ButtonSIWELogout } from '../../integrations/siwe/components/button-siwe-logout'
 
+import { WalletConnect } from '@/components/blockchain/wallet-connect'
+
+
 export function UserDropdown() {
   return (
     <motion.div className="relative inline-block text-left text-neutral-700" {...FADE_IN_ANIMATION_SETTINGS}>
       <Popover>
         <PopoverTrigger>
-          <button className="bg-card flex items-center justify-center overflow-hidden rounded-md p-2 px-4 transition-all duration-75 hover:bg-neutral-100 focus:outline-none active:scale-95 ">
+          <button className="bg-primary-dark flex items-center justify-center overflow-hidden rounded-md p-2 px-4 transition-all duration-75 hover:bg-primary-mid focus:outline-none active:scale-95 ">
             Menu
           </button>
         </PopoverTrigger>
         <PopoverContent>
           <div className="w-full rounded-md p-2 ">
             <Link className="user-dropdown-menu-item" href="/">
-              <LuBinary className="h-4 w-4" />
-              <p className="text-sm">Site</p>
+              <p className="text-sm py-1">Home</p>
             </Link>
-            <Link className="user-dropdown-menu-item " href="/dashboard">
-              <LuLayoutDashboard className="h-4 w-4" />
-              <p className="text-sm">Dashboard</p>
+            <Link className="user-dropdown-menu-item" href="/vaults">
+              <p className="text-sm py-1">Vaults</p>
             </Link>
-            <Link className="user-dropdown-menu-item " href="/admin">
-              <LuDatabase className="h-4 w-4" />
-              <p className="text-sm">Admin</p>
+            <Link className="user-dropdown-menu-item" href="/community">
+              <p className="text-sm py-1">Community</p>
             </Link>
-            <BranchIsAuthenticated>
+            <WalletConnect />
+            {/* <BranchIsAuthenticated>
               <ButtonSIWELogout className="user-dropdown-menu-item flex">
                 <LuLogOut className="h-4 w-4" />
                 <span className="text-sm">Logout</span>
@@ -41,7 +41,7 @@ export function UserDropdown() {
                 <LuLogOut className="inline-block h-4 w-4" />
                 <span className="ml-2 text-sm">Login</span>
               </ButtonSIWELogin>
-            </BranchIsAuthenticated>
+            </BranchIsAuthenticated> */}
           </div>
         </PopoverContent>
       </Popover>

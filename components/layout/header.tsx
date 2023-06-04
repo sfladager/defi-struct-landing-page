@@ -56,7 +56,7 @@ export function Header(props: Props) {
           </div>
 
           <div className="flex items-center gap-4">
-            <NetworkStatus />
+            {/* <NetworkStatus /> */}
             <WalletConnect />
           </div>
         </>

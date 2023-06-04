@@ -1,7 +1,7 @@
 'use client'
 import * as React from 'react'
 
-import { ConnectButton } from '@rainbow-me/rainbowkit'
+import { ConnectButton, useAccountModal } from '@rainbow-me/rainbowkit'
 
 interface WalletConnectCustomProps {
   className?: string
@@ -20,9 +20,13 @@ export const WalletConnect = ({
   labelConnect = 'Connect Wallet',
   labelWrongNetwork = 'Wrong Network',
 }: WalletConnectCustomProps) => {
+
+  const { openAccountModal } = useAccountModal();
+
   return (
     <ConnectButton.Custom>
       {({ account, chain, openChainModal, openConnectModal, authenticationStatus }) => {
+        console.log(account)
         const connected = account && chain && (!authenticationStatus || authenticationStatus === 'authenticated')
 
         return (
@@ -31,7 +35,9 @@ export const WalletConnect = ({
               if (!connected) {
                 return (
                   <button className={classNameConnect} onClick={openConnectModal} type="button">
-                    {labelConnect}
+                    <span className="text-xs font-bold leading-none p-2 inline-block">
+                      {labelConnect}
+                    </span>
                   </button>
                 )
               }
@@ -39,13 +45,15 @@ export const WalletConnect = ({
               if (chain.unsupported) {
                 return (
                   <button className={classNameWrongNetwork} onClick={openChainModal} type="button">
-                    {labelWrongNetwork}
+                    <span className="text-xs font-bold leading-none p-2 inline-block">
+                      {labelWrongNetwork}
+                    </span>
                   </button>
                 )
               }
 
               return (
-                <div className="">
+                <div className="flex flex-col items-center gap-4 md:flex-row">
                   <button className={classNameConnected} onClick={openChainModal} style={{ display: 'flex', alignItems: 'center' }} type="button">
                     {chain.hasIcon && (
                       <div
@@ -53,7 +61,7 @@ export const WalletConnect = ({
                           background: chain.iconBackground,
                           width: 18,
                           height: 18,
-                          borderRadius: 999,
+                          // borderRadius: 999,
                           overflow: 'hidden',
                           marginRight: 4,
                         }}>
@@ -63,7 +71,15 @@ export const WalletConnect = ({
                         )}
                       </div>
                     )}
-                    <span className="ml-1 text-lg lowercase">{chain.name}</span>
+                    <span className="uppercase whitespace-nowrap text-xs font-bold tracking-wider leading-none p-2">{chain.name}</span>
+                  </button>
+                  <button 
+                    onClick={openAccountModal}  
+                    className={classNameConnected}
+                    type="button">
+                    <span className="text-xs font-bold leading-none p-2 inline-block">
+                      {account.displayName}
+                    </span>
                   </button>
                 </div>
               )
@@ -76,3 +92,4 @@ export const WalletConnect = ({
 }
 
 export default WalletConnect
+
